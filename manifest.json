@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Active Tab Example",
+    "version": "0.0.1",
+    "description": "",
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+
+    "icons": {
+        "16": "assets/icon/icon16.png",
+        "48": "assets/icon/icon48.png",
+        "128": "assets/icon/icon128.png"
+    },
+    "content_scripts": [{
+      "js": ["main.js"],
+      "matches": ["https://*.scrimba.com/*"]
+    }]
+  }
