@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Active Tab Example",
+    "name": "Scrimba Discord RPC",
     "version": "0.0.1",
     "description": "",
     "background": {
