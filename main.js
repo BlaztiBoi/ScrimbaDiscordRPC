@@ -8,6 +8,21 @@ chrome.runtime.sendMessage(extensionId, {mode: 'active'}, function(response) {
    console.log("Blazt's Discord Presence registred", response)
 });
 
+let state = document.title ? document.title : window.location.hostname;
+let detail = "";
+let fullpath = "Scrimba";
+const titles = Array.from(document.getElementsByClassName("title small"))
+if (titles.length) {
+    const arrayMaybe = titles.map(function(title) {
+
+      return title.innerText
+    })
+    fullpath = arrayMaybe.join(" / ")
+    state = arrayMaybe[arrayMaybe.length-1]
+    arrayMaybe.pop()
+    detail += arrayMaybe.join(" / ")
+}
+
 // Wait for presence Requests
 chrome.runtime.onMessage.addListener(function(info, sender, sendResponse) {
   // console.log('Presence requested', info);
@@ -21,9 +36,10 @@ function getPresence(){
   return {
     clientId: '1165177145031663656  ',
     presence: {
+      state : state,
       largeImageKey : "scrimba",
-      largeImageText: "Scrimba",
-      details: document.title ? document.title : window.location.hostname,
+      largeImageText: fullpath,
+      details: detail,
       startTimestamp: time,
       instance: true,
     }
